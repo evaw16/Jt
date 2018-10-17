@@ -29,7 +29,7 @@ require_once 'init.php';
 				<ul class="sidebar-nav">
 					<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
 					<li class="active"><a href="tiket.php"><i class="fa fa-fw fa-star"></i><span>Penjualan Tiket</span></a></li>
-					<li><a href="rekap.html"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
+					<li><a href="rekap.php"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
 					<li>
 						<a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
 							<i class="fa fa-fw fa-window-maximize"></i><span>Pengajuan</span>
@@ -41,8 +41,6 @@ require_once 'init.php';
 							<!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
 						</ul>
 					</li>
-					<!-- <li><a href="theme.html"><i class="fa fa-fw fa-paint-brush"></i><span>Theme</span></a></li>
-					<li><a href="updates.html"><i class="fa fa-fw fa-wrench"></i><span>Updates &amp Fixes</span></a></li> -->
 				</ul>
 			</div>
 		</div>
@@ -79,7 +77,7 @@ require_once 'init.php';
 			<div id="content">
 				<div class="container-fluid">
 					<div class="col-xs-12 col-md-6">
-						<div class="panel panel-default" style="width:900px; height:500px;">
+						<div class="panel panel-default" style="width:900px; height:500px; margin-left:70px;">
 							<div class="panel-heading">
 								<h3 class="panel-title">form</h3>
 								<span class="text-grey"></span>
@@ -110,36 +108,24 @@ require_once 'init.php';
 											<input type="text" class="form-control input-lg" placeholder="Kota Asal" name="kota" required>
 										</div>
 									</div>
-									<!-- <div class="form-group">
-									<label for="inputEmail3" class="col-sm-2 control-label">Jumlah</label>
-									<div class="col-sm-10">
-									<input type="email" class="form-control input-lg" placeholder="Jumlah">
 								</div>
-							</div> -->
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<input type="submit" name="submit" value="Save" class="btn btn-primary">
+										<button type="reset" class="btn btn-default">Cancel</button>
+									</div>
+								</div>
+							</form>
 						</div>
-						<!-- <div class="form-group"
-						<label for="inputPassword3" class="col-sm-2 control-label">Nama</label>
-						<div class="col-sm-10">
-						<input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Password">
-					</div>
-				</div> -->
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" name="submit" value="Save" class="btn btn-primary">
-						<button type="reset" class="btn btn-default">Cancel</button>
-					</div>
-				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
-</div>
-</div>
-</form>
-</div>
 </div>
 </div>
 </div>
@@ -162,7 +148,7 @@ if ($_POST['submit']) {
 	mysqli_query($con,$sql);
 	?>
 	<script type="text/javascript">
-		alert("data berhasil disimpan");
+	alert("data berhasil disimpan");
 	</script>
 	<?php
 }

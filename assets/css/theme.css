@@ -41,7 +41,7 @@ p{
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 260px;
+	width: 300px;
 	overflow-x: hidden;
 	overflow-y: auto;
 	z-index: 1000;
@@ -191,6 +191,7 @@ p{
 #top-nav{
 	position:relative;
 	margin-top: 25px;
+	margin-left: 100px;
 }
 
 #top-nav > nav{

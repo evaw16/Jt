@@ -1,9 +1,12 @@
+<?php
+require_once 'init.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Rekap Data Pengunjung</title>
+	<title>Rekapan Penjualan Tiket</title>
 	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/theme.css">
@@ -24,7 +27,7 @@
 				<ul class="sidebar-nav">
 					<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
 					<li ><a href="tiket.php"><i class="fa fa-fw fa-star"></i><span>Penjualan Tiket</span></a></li>
-					<li class="active"><a href="rekap.html"><i class="fa fa-fw fa-font"></i><span>Rekap Data Pengunjung</span></a></li>
+					<li class="active"><a href="rekap.php"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
 					<li>
 						<a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
 							<i class="fa fa-fw fa-window-maximize"></i><span>Pengajuan</span>
@@ -36,8 +39,6 @@
 							<!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
 						</ul>
 					</li>
-					<!-- <li><a href="theme.html"><i class="fa fa-fw fa-paint-brush"></i><span>Theme</span></a></li>
-					<li><a href="updates.html"><i class="fa fa-fw fa-wrench"></i><span>Updates &amp Fixes</span></a></li> -->
 				</ul>
 			</div>
 		</div>
@@ -54,9 +55,9 @@
 							<button type="button" class="sidebar-toggle">
 								<i class="fa fa-bars"></i>
 							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Rekap Data Pengunjung</a>
+							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Rekapan Penjualan Tiket</a>
 						</div>
-            <div class="collapse navbar-collapse" id="menu">
+						<div class="collapse navbar-collapse" id="menu">
 							<ul class="nav navbar-nav navbar-right">
 								<li>
 									<a href="index.php">
@@ -74,54 +75,56 @@
 			<div id="content">
 				<div class="container-fluid">
 					<div class="col-xs-12 col-md-6">
-						<div class="panel panel-default" style="width:900px; height:500px;">
+						<div class="panel panel-default" style="width:900px; height:500px; margin-left:70px;">
 							<div class="panel-heading">
-								<h3 class="panel-title">Rekap Data Tiket</h3>
+								<h3 class="panel-title">Rekapan Penjualan Tiket</h3>
+								<br>
+								<?php
+								$jumlah = 0;
+								$total = 0;
+								$tanggal = $_GET['tanggal'];
+								?>
+								<h6>Tanggal : <?=$tanggal?></h6>
 								<span class="text-grey"></span>
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Nama</th>
+											<th>Jumlah</th>
+											<th>Kota Asal</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$sql = "select * from tiket where tanggal = '$tanggal'";
+										$result = mysqli_query($con,$sql);
+										while ($item = mysqli_fetch_array($result)) {
+											?>
+											<tr>
+												<td><?=$item['nama']?></td>
+												<td><?=$item['jumlah']?></td>
+												<td><?=$item['kota']?></td>
+												<?php
+												$jumlah = $item['jumlah'];
+												$total  += $jumlah;
+												?>
+											</tr>
+										<?php } ?>
+									</tbody>
+								</table>
 							</div>
-							<!-- <div class="panel-body">
-								<form class="form-horizontal">
-									<div class="form-group">
-										<label for="inputEmail3" class="col-sm-2 control-label">Tanggal</label>
-										<div class="col-sm-10">
-											<input type="datetime-local" class="form-control input-lg" placeholder="Tanggal">
-										</div>
-									</div> -->
-									<!-- <div class="form-group">
-										<label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
-										<div class="col-sm-10">
-											<input type="email" class="form-control input-lg" placeholder="Nama">
-										</div>
-									</div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Textarea</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control"></textarea>
-                    </div>
-                  </div> -->
-								<!-- </div> -->
-								<!-- <div class="form-group"
-								<label for="inputPassword3" class="col-sm-2 control-label">Nama</label>
-								<div class="col-sm-10">
-								<input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Password">
+							<div class="form-group">
+								<div class="col-sm-4">
+									<h4>Total : <?=$total?></h4>
+								</div>
 							</div>
-						</div> -->
-            <div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-							</div>
-						</div>
-						<!-- <div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-primary">Rekap</button>
-								<button type="reset" class="btn btn-default">Cancel</button> -->
-							<!-- </div>
-						</div> -->
-					</form>
+
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</form>
+	</form>
 </div>
 </div>
 </div>

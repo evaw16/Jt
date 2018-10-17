@@ -23,7 +23,7 @@
 				<ul class="sidebar-nav">
 					<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
 					<li ><a href="tiket.php"><i class="fa fa-fw fa-star"></i><span>Penjualan Tiket</span></a></li>
-					<li><a href="rekap.html"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
+					<li><a href="rekap.php"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
 					<li>
 						<a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
 							<i class="fa fa-fw fa-window-maximize"></i><span>Pengajuan</span>

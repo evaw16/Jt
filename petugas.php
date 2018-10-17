@@ -41,77 +41,79 @@ require_once 'init.php';
             </ul>
             <li class="active"><a href="petugas.php"><i class="fa fa-fw fa-bell"></i><span>Data Petugas</span></a></li>
           </ul>
-          <!-- <div class="sidebar-footer">
-          <hr style="border-color: #DDD">
-          created by <a href="http://ainuls.github.io" target="_blank" class="text-default">ainul yaqin</a><br>
-        </div> -->
+        </div>
       </div>
-    </div>
-    <div id="main-panel">
-      <div id="top-nav">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <!-- Navbar toggle button -->
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-                <i class="fa fa-bars"></i>
-              </button>
-              <!-- Sidebar toggle button -->
-              <button type="button" class="sidebar-toggle">
-                <i class="fa fa-bars"></i>
-              </button>
-              <a class="navbar-brand text-size-24" href="#"><i class="fa fa-fw fa-bell"></i> Data Petugas</a>
-            </div>
-            <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a href="index.php">
-                    <span class="fa-stack">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-power-off fa-stack-1x"></i>
-                    </span>
-                  </a>
-                </li>
-              </ul>
+      <div id="main-panel">
+        <div id="top-nav">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <!-- Navbar toggle button -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <!-- Sidebar toggle button -->
+                <button type="button" class="sidebar-toggle">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand text-size-24" href="#"><i class="fa fa-fw fa-bell"></i> Data Petugas</a>
+              </div>
+              <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a href="index.php">
+                      <span class="fa-stack">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-power-off fa-stack-1x"></i>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>No. Hp</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <td>Ads</td>
-          <td>asd</td>
-          <td>13</td>
-          <td>asd</td>
-        </tbody>
-      </table>
-    </div>
-    <!-- <table class="table table-bordered">
-    <thead>
-    <tr>
-    <th>Nama</th>
-    <th>Alamat</th>
-    <th>No. Hp</th>
-    <th>Username</th>
-  </tr>
-</thead>
-<tbody>
-<td>Ads</td>
-<td>asd</td>
-<td>13</td>
-<td>asd</td>
-</tbody>
-</table> -->
-</body>
-<script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/theme-floyd.js"></script>
-</html>
+        </nav>
+        <table class="table table-bordered" style="margin-left:110px; width:950px;">
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Alamat</th>
+              <th>No. Hp</th>
+              <th>Username</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $sql="select * from aktor";
+            $result = mysqli_query($con,$sql);
+            while ($item = mysqli_fetch_array($result)) {
+              ?>
+              <tr>
+                <td hidden><?=$item['id_pegawai']?></td>
+                <td><?=$item['nama']?></td>
+                <td><?=$item['alamat']?></td>
+                <td><?=$item['no. hp']?></td>
+                <td><?=$item['username']?></td>
+                <td>
+                  <a href="#">Hapus</a> || <a href="editAktor.php?id_pegawai=<?=$item['id_pegawai']?>">Ubah</a>
+                </td>
+              </tr>
+              <?php
+            }
+            ?>
+          </tbody>
+        </table>
+        <a href="addPetugas.php">
+          <button type="submit" name="submit" class="btn btn-primary"
+          style="margin-left:900px; margin-top:300px;">Tambah</button>
+        </a>
+      </div>
+    </body>
+    <script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme-floyd.js"></script>
+    </html>
+  }
+
+  ?>

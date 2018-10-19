@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,7 @@ require_once 'init.php';
         </div>
         <ul class="sidebar-nav">
           <li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
-          <li><a href="index.html"><i class="fa fa-fw fa-star"></i><span>Data Pengunjung</span></a></li>
+          <li><a href="rekap.php"><i class="fa fa-fw fa-star"></i><span>Data Pengunjung</span></a></li>
           <li><a href="artikel.html"><i class="fa fa-fw fa-font"></i><span>Artikel</span></a></li>
           <li>
             <a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
@@ -102,7 +103,7 @@ require_once 'init.php';
                               <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">No. Hp</label>
                                 <div class="col-sm-10">
-                                  <input type="number" class="form-control input-lg" placeholder="No. Hp" name="notelp" value="<?=$item['notelp']?>"required>
+                                  <input type="text" class="form-control input-lg" placeholder="No. Hp" name="notelp" value="<?=$item['no. hp']?>"required>
                                 </div>
                               </div>
                               <div class="form-group">
@@ -124,7 +125,7 @@ require_once 'init.php';
                             </div>
                             <div class="form-group">
                               <div class="col-sm-offset-2 col-sm-10">
-                                <input name="submit" value="Save" type="submit" class="btn btn-primary">
+                                <input name="submit" value="Update" type="submit" class="btn btn-primary">
                                 <button type="reset" class="btn btn-default">Cancel</button>
                               </div>
                             </div>
@@ -148,8 +149,21 @@ require_once 'init.php';
 
 </html>
 <?php
-$sql = "UPDATE `aktor` SET(`nama`,`alamat`,`no. hp`,`username`,`password`)
-VALUES ('$nama', '$alamat','$no. hp','$username','$password')WHERE id_pegawai=1"; 
-mysqli_query($con,$sql);
+if (isset($_POST['submit'])) {
+  $id= $_GET['id_pegawai'];
+  $nama= $_POST['nama'];
+  $alamat= $_POST['alamat'];
+  $notelp= $_POST['notelp'];
+  $username= $_POST['username'];
+  $password = md5($_POST['password']);
 
- ?>
+  $sql = "UPDATE `aktor` SET `nama`='$nama',`alamat`='$alamat',`no. hp`='$notelp',`username`='$username',`password`='$password' WHERE `id_pegawai` = $id";
+
+  // "UPDATE `aktor` SET(`nama`,`alamat`,`no. hp`,`username`,`password`)
+  // VALUES ('$nama', '$alamat','$notelp','$username','$password')WHERE id_pegawai=$id";
+  mysqli_query($con,$sql);
+  header("location:petugas.php");
+  exit();
+}
+
+?>

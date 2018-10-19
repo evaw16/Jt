@@ -96,7 +96,7 @@ require_once 'init.php';
                 <td><?=$item['no. hp']?></td>
                 <td><?=$item['username']?></td>
                 <td>
-                  <a href="#">Hapus</a> || <a href="editAktor.php?id_pegawai=<?=$item['id_pegawai']?>">Ubah</a>
+                  <a href="hapus.php?id_pegawai=<?=$item['id_pegawai']?>">Hapus</a> || <a href="editAktor.php?id_pegawai=<?=$item['id_pegawai']?>">Ubah</a>
                 </td>
               </tr>
               <?php

@@ -27,17 +27,19 @@ ob_start();
 				<ul class="sidebar-nav">
 					<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
 					<li ><a href="tiket.php"><i class="fa fa-fw fa-star"></i><span>Penjualan Tiket</span></a></li>
-					<li class="active"><a href="rekap.html"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
+					<li><a href="rekap.php"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
 					<li>
 						<a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
 							<i class="fa fa-fw fa-window-maximize"></i><span>Pengajuan</span>
 							<span class="sidebar-nav-arrow"><i class="fa fa-angle-down"></i></span>
 						</a>
 						<ul class="sidebar-nav-child collapse collapseable" id="nav-dropdown1">
-							<li><a href="panel.html"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
-							<li><a href="modal.html"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
+							<li><a href="artikelp.php"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
+							<li><a href="proposalp.php"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
+							<!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
 						</ul>
 					</li>
+					<li><a href="pemberitahuan.php"><i class="fa fa-fw fa-bell"></i><span>Pemberitahuan</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -89,7 +91,7 @@ ob_start();
 									</div>
 									<div class="form-group">
 										<div class="col-sm-offset-2 col-sm-10">
-											<input type="submit" class="btn btn-primary" name="submit" value="Rekap">
+											<input type="submit" class="btn btn-primary" name="submit" value="Check">
 										</div>
 									</div>
 								</form>

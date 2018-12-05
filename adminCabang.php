@@ -1,3 +1,7 @@
+<?php
+require 'init.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +34,12 @@
 							<span class="sidebar-nav-arrow"><i class="fa fa-angle-down"></i></span>
 						</a>
 						<ul class="sidebar-nav-child collapse collapseable" id="nav-dropdown1">
-							<li><a href="panel.html"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
-							<li><a href="modal.html"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
+							<li><a href="artikelp.php"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
+							<li><a href="proposalp.php"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
 							<!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
 						</ul>
 					</li>
+					<li><a href="pemberitahuan.php"><i class="fa fa-fw fa-bell"></i><span>Pemberitahuan</span></a></li>
 				</ul>
 
 			</div>
@@ -52,7 +57,7 @@
 							<button type="button" class="sidebar-toggle">
 								<i class="fa fa-bars"></i>
 							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-star-o"></i> xxx</a>
+							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-star-o"></i> <?php echo $_SESSION['id_pegawai'] ?></a>
 						</div>
 						<div class="collapse navbar-collapse" id="menu">
 							<ul class="nav navbar-nav navbar-right">

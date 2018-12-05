@@ -23,7 +23,7 @@
 				<ul class="sidebar-nav">
 					<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
 					<li ><a href="adminUtamaa.html"><i class="fa fa-fw fa-star"></i><span>Data Pengunjung</span></a></li>
-					<li class="active"><a href="artikel.html"><i class="fa fa-fw fa-font"></i><span>Artikel</span></a></li>
+					<li class="active"><a href="artikel.php"><i class="fa fa-fw fa-font"></i><span>Artikel</span></a></li>
 					<li>
 						<a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
 							<i class="fa fa-fw fa-window-maximize"></i><span>Verifikasi</span>
@@ -36,7 +36,7 @@
 						</ul>
 						<li><a href="petugas.php"><i class="fa fa-fw fa-bell"></i><span>Data Petugas</span></a></li>
 					</ul>
-				</div>
+				</div> 
 			</div>
 			<div id="main-panel">
 				<div id="top-nav">
@@ -79,15 +79,15 @@
 								<div class="panel-body">
 									<form class="form-horizontal">
 										<div class="form-group">
-											<label for="inputEmail3" class="col-sm-2 control-label">Tanggal</label>
+											<label for="inputDate" class="col-sm-2 control-label">Tanggal</label>
 											<div class="col-sm-10">
-												<input type="email" class="form-control input-lg" placeholder="Tanggal">
+												<input type="date" class="form-control input-lg" placeholder="Tanggal">
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="inputEmail3" class="col-sm-2 control-label">Judul</label>
+											<label for="inputJudul" class="col-sm-2 control-label">Judul</label>
 											<div class="col-sm-10">
-												<input type="email" class="form-control input-lg" placeholder="Judul">
+												<input type="name" class="form-control input-lg" placeholder="Judul">
 											</div>
 										</div>
 										<div class="form-group">
@@ -118,10 +118,9 @@
 						</div>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 </body>
 <script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>

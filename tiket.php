@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,7 @@ require_once 'init.php';
 				</div>
 				<ul class="sidebar-nav">
 					<li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
-					<li class="active"><a href="tiket.php"><i class="fa fa-fw fa-star"></i><span>Penjualan Tiket</span></a></li>
+					<li ><a href="tiket.php"><i class="fa fa-fw fa-star"></i><span>Penjualan Tiket</span></a></li>
 					<li><a href="rekap.php"><i class="fa fa-fw fa-font"></i><span>Rekapan Penjualan Tiket</span></a></li>
 					<li>
 						<a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
@@ -36,12 +37,14 @@ require_once 'init.php';
 							<span class="sidebar-nav-arrow"><i class="fa fa-angle-down"></i></span>
 						</a>
 						<ul class="sidebar-nav-child collapse collapseable" id="nav-dropdown1">
-							<li><a href="panel.html"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
-							<li><a href="modal.html"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
+							<li><a href="artikelp.php"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
+							<li><a href="proposalp.php"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
 							<!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
 						</ul>
 					</li>
+					<li><a href="pemberitahuan.php"><i class="fa fa-fw fa-bell"></i><span>Pemberitahuan</span></a></li>
 				</ul>
+
 			</div>
 		</div>
 		<div id="main-panel">
@@ -62,7 +65,7 @@ require_once 'init.php';
 						<div class="collapse navbar-collapse" id="menu">
 							<ul class="nav navbar-nav navbar-right">
 								<li>
-									<a href="index.php">
+									<a href="logout.php">
 										<span class="fa-stack">
 											<i class="fa fa-circle fa-stack-2x"></i>
 											<i class="fa fa-power-off fa-stack-1x"></i>
@@ -137,14 +140,15 @@ require_once 'init.php';
 
 </html>
 <?php
-if ($_POST['submit']) {
+if (isset($_POST['submit'])) {
 	$tanggal = $_POST['tanggal'];
 	$nama = $_POST['nama'];
 	$jumlah = $_POST['jumlah'];
 	$kota = $_POST['kota'];
+	$id= $_SESSION['id_pegawai'];
 
-	$sql = "INSERT INTO `tiket`(`tanggal`, `nama`, `jumlah`, `kota`)
-	VALUES ('$tanggal','$nama',$jumlah,'$kota')";
+	$sql = "INSERT INTO `tiket`(`id_pegawai`,`tanggal`, `nama`, `jumlah`, `kota`)
+	VALUES ($id,'$tanggal','$nama',$jumlah,'$kota')";
 	mysqli_query($con,$sql);
 	?>
 	<script type="text/javascript">

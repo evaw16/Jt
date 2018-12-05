@@ -8,3 +8,6 @@ mysqli_query($con,$sql);
 header("location:petugas.php");
 
 ?>
+<script type="text/javascript">
+  alert("Data Berhasil Dihapus");
+</script>

@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +97,7 @@ require_once 'init.php';
 									</thead>
 									<tbody>
 										<?php
-										$sql = "select * from tiket where tanggal = '$tanggal'";
+										$sql = "SELECT * FROM tiket WHERE tanggal = '$tanggal'";
 										$result = mysqli_query($con,$sql);
 										while ($item = mysqli_fetch_array($result)) {
 											?>

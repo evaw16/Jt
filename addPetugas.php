@@ -1,6 +1,6 @@
 <?php
 require_once 'init.php';
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +35,7 @@ require_once 'init.php';
               <span class="sidebar-nav-arrow"><i class="fa fa-angle-down"></i></span>
             </a>
             <ul class="sidebar-nav-child collapse collapseable" id="nav-dropdown1">
-              <li><a href="panel.html"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
+              <li><a href="artikelverif.php"><i class="fa fa-fw fa-window-maximize"></i><span>Artikel</span></a></li>
               <li><a href="modal.html"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
               <!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
             </ul>
@@ -85,6 +85,12 @@ require_once 'init.php';
                       </div>
                       <div class="panel-body">
                         <form class="form-horizontal" method="post">
+                          <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Wisata</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control input-lg" placeholder="Nama Wisata" name="nama_wisata" required>
+                            </div>
+                          </div>
                           <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama</label>
                             <div class="col-sm-10">
@@ -144,7 +150,8 @@ require_once 'init.php';
 
 </html>
 <?php
-if ($_POST['submit']) {
+if (isset($_POST['submit'])) {
+  $nama_wisata = $_POST['nama_wisata'];
   $nama = $_POST['nama'];
   $alamat = $_POST['alamat'];
   $notelp = $_POST['notelp'];
@@ -152,15 +159,18 @@ if ($_POST['submit']) {
   $password = md5($_POST['password']);
   $level = 2;
 
-  $sql = "INSERT INTO `aktor`(`nama`, `alamat`, `no. hp`, `username`, `password`, `level`)
-  VALUES ('$nama','$alamat','$notelp','$username','$password',$level)";
+  $sql = "INSERT INTO `aktor`(`nama_wisata`,`nama`, `alamat`, `no. hp`, `username`, `password`, `level`)
+  VALUES ('$nama_wisata','$nama','$alamat','$notelp','$username','$password',$level)";
   mysqli_query($con,$sql);
   ?>
   <script type="text/javascript">
-    alert("data berhasil ditambahkan");
+  alert("Data Berhasil Disimpan");
   </script>
   <?php
+  
+  mysqli_query($con,$sql);
+  header("location:petugas.php");
+  exit();
 }
 
-
- ?>
+?>

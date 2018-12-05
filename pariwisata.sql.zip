@@ -1,0 +1,219 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 05 Des 2018 pada 09.12
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 7.1.22
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `pariwisata`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `aktor`
+--
+
+CREATE TABLE `aktor` (
+  `id_pegawai` int(10) NOT NULL,
+  `nama_wisata` varchar(50) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `no. hp` varchar(12) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `level` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `aktor`
+--
+
+INSERT INTO `aktor` (`id_pegawai`, `nama_wisata`, `nama`, `alamat`, `no. hp`, `username`, `password`, `level`) VALUES
+(8, 'Pantai Payangan', 'Dhimas Maulana', 'Bondowoso', '085321899621', 'dhimass', '7e1cee418ddd51adbc9e4c272a6ab028', 2),
+(9, 'Air Terjun Tancak', 'Supriyadi Cahyono', 'Balung', '08979833217', 'sapri', 'd79444495ba8886c397b418227564d3f', 2),
+(10, 'Pantai Papuma', 'eva', 'bwi', '081333546721', 'eva', '14bd76e02198410c078ab65227ea0794', 2),
+(11, '', 'admin', '', '', 'admin', '21232F297A57A5A743894A0E4A801FC3', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `artikel`
+--
+
+CREATE TABLE `artikel` (
+  `id_artikel` int(10) NOT NULL,
+  `id_pegawai` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `gambar` varchar(200) NOT NULL,
+  `judul` varchar(200) NOT NULL,
+  `konten` text NOT NULL,
+  `status` enum('Terima','Tolak') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `artikel`
+--
+
+INSERT INTO `artikel` (`id_artikel`, `id_pegawai`, `tanggal`, `gambar`, `judul`, `konten`, `status`) VALUES
+(18, 8, '2018-11-03', '20112018213659banner.png', 'asdf', 'dsf', 'Terima'),
+(19, 10, '2018-11-08', '20112018222141header1.jpg', 'papuma ashooy', 'huyyy', 'Terima'),
+(20, 8, '2018-11-08', '20112018223658header9.jpg', 'apaa ini??', 'hmmmm\r\n', 'Terima'),
+(21, 8, '2018-11-15', '22112018083030header1.jpg', 'meongku', 'guguguk\r\n', 'Terima'),
+(22, 8, '2018-11-22', '22112018100717header1.jpg', 'Papuma', 'papuma adalah ....', 'Terima');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `proposal`
+--
+
+CREATE TABLE `proposal` (
+  `id_proposal` int(11) NOT NULL,
+  `id_pegawai` int(10) NOT NULL,
+  `proposal` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `status` enum('Terima','Tolak') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `proposal`
+--
+
+INSERT INTO `proposal` (`id_proposal`, `id_pegawai`, `proposal`, `tanggal`, `status`) VALUES
+(4, 10, '21112018040840bmc.docx', '2018-11-23', 'Tolak'),
+(5, 8, '22112018082619bmc.docx', '2018-11-16', 'Terima'),
+(6, 8, '', '2018-11-22', 'Terima'),
+(7, 8, '22112018083935meong.docx', '2018-11-14', 'Terima'),
+(8, 8, '22112018102000PERBEDAAN IT DINEGARA MAJU DAN BERKEMBANG.docx', '2018-11-24', 'Tolak');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tiket`
+--
+
+CREATE TABLE `tiket` (
+  `id_tiket` int(11) NOT NULL,
+  `id_pegawai` int(10) NOT NULL,
+  `tanggal` date NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `kota` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tiket`
+--
+
+INSERT INTO `tiket` (`id_tiket`, `id_pegawai`, `tanggal`, `nama`, `jumlah`, `kota`) VALUES
+(13, 8, '2018-11-17', 'mehong', 1, 'jonggol'),
+(14, 8, '2018-11-05', 'mehong', 2, 'jombang'),
+(15, 8, '2018-11-02', 'mehong', 2, 'bondowoso'),
+(16, 10, '2018-11-10', 'regi', 1, 'jonggol'),
+(17, 8, '2018-11-22', 'dhimas', 2, 'bondowoso'),
+(18, 8, '2018-11-22', 'regi', 2, 'jombang'),
+(19, 11, '2018-11-17', 'Budi', 2, 'Malang'),
+(20, 11, '2018-11-17', 'Regi', 2, 'Jember'),
+(21, 11, '2018-11-17', 'Burhan', 4, 'Probolinggo');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `aktor`
+--
+ALTER TABLE `aktor`
+  ADD PRIMARY KEY (`id_pegawai`),
+  ADD UNIQUE KEY `nama_wisata` (`nama_wisata`);
+
+--
+-- Indeks untuk tabel `artikel`
+--
+ALTER TABLE `artikel`
+  ADD PRIMARY KEY (`id_artikel`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
+
+--
+-- Indeks untuk tabel `proposal`
+--
+ALTER TABLE `proposal`
+  ADD PRIMARY KEY (`id_proposal`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
+
+--
+-- Indeks untuk tabel `tiket`
+--
+ALTER TABLE `tiket`
+  ADD PRIMARY KEY (`id_tiket`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `aktor`
+--
+ALTER TABLE `aktor`
+  MODIFY `id_pegawai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `artikel`
+--
+ALTER TABLE `artikel`
+  MODIFY `id_artikel` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT untuk tabel `proposal`
+--
+ALTER TABLE `proposal`
+  MODIFY `id_proposal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `tiket`
+--
+ALTER TABLE `tiket`
+  MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `artikel`
+--
+ALTER TABLE `artikel`
+  ADD CONSTRAINT `artikel_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `aktor` (`id_pegawai`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `proposal`
+--
+ALTER TABLE `proposal`
+  ADD CONSTRAINT `proposal_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `aktor` (`id_pegawai`);
+
+--
+-- Ketidakleluasaan untuk tabel `tiket`
+--
+ALTER TABLE `tiket`
+  ADD CONSTRAINT `tiket_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `aktor` (`id_pegawai`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

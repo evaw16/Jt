@@ -39,7 +39,7 @@ require_once 'init.php';
               <li><a href="proposalverif.php"><i class="fa fa-fw fa-window-restore"></i><span>Proposal</span></a></li>
               <!-- <li><a href="alert.html"><i class="fa fa-fw fa-bell"></i><span>Alert</span></a></li> -->
             </ul>
-            <li class="active"><a href="petugas.php"><i class="fa fa-fw fa-bell"></i><span>Data Petugas</span></a></li>
+            <li class=""><a href="petugas.php"><i class="fa fa-fw fa-bell"></i><span>Data Petugas</span></a></li>
           </ul>
         </div>
       </div>
@@ -56,7 +56,7 @@ require_once 'init.php';
                 <button type="button" class="sidebar-toggle">
                   <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand text-size-24" href="#"><i class="fa fa-fw fa-bell"></i> Data Petugas</a>
+                <a class="navbar-brand text-size-24" href="#"><i class="fa fa-fw fa-bell"></i> Verifikasi Artikel</a>
               </div>
               <div class="collapse navbar-collapse" id="menu">
                 <ul class="nav navbar-nav navbar-right">
@@ -76,30 +76,37 @@ require_once 'init.php';
         <table class="table table-bordered" style="margin-left:110px; width:950px;">
           <thead>
             <tr>
-              <th>Nama Wisata</th>
-              <th>Nama</th>
-              <th>Alamat</th>
-              <th>No. Hp</th>
-              <th>Username</th>
-              <th>Action</th>
+              <th style="text-align:center">Nama Pegawai</th>
+              <th style="text-align:center">Tanggal</th>
+              <th style="text-align:center">Gambar</th>
+              <th style="text-align:center">Judul</th>
+              <th style="text-align:center">Konten</th>
+              <th style="text-align:center">Status</th>
+              <th style="text-align:center">Aksi</th>
+
             </tr>
           </thead>
           <tbody>
             <?php
-            $sql="select * from aktor where level = 2";
+            $sql="SELECT artikel.id_artikel, aktor.nama, artikel.tanggal,
+                         artikel.gambar, artikel.judul, artikel.konten, artikel.status
+                  FROM artikel JOIN aktor ON artikel.id_pegawai = aktor.id_pegawai";
             $result = mysqli_query($con,$sql);
             while ($item = mysqli_fetch_array($result)) {
               ?>
               <tr>
-                <td hidden><?=$item['id_pegawai']?></td>
-                <td><?=$item['nama_wisata']?></td>
-                <td><?=$item['nama']?></td>
-                <td><?=$item['alamat']?></td>
-                <td><?=$item['no. hp']?></td>
-                <td><?=$item['username']?></td>
+                <td hidden><?=$item['id_artikel']?></td>
+                <td style="text-align:center"><?=$item['nama']?></td>
+                <td style="text-align:center"><?=$item['tanggal']?></td>
+                <td style="text-align:center"><?="<img src='upload/".$item['gambar']."'style='width:200px; heigth:200px;'>" ?></td>
+                <td style="text-align:center"><?=$item['judul']?></td>
+                <td style="text-align:center"><?=$item['konten']?></td>
+                <td style="text-align:center"><?=$item['status']?></td>
                 <td>
-                  <a onclick="return confirm('Apakah Anda yakin ingin menghapus?')" href="hapus.php?id_pegawai=<?=$item['id_pegawai']?>">Hapus</a> || <a href="editAktor.php?id_pegawai=<?=$item['id_pegawai']?>">Ubah</a>
+                  <p style="text-align:center"><a href="terimaartikel.php?id=<?php echo $item['id_artikel']?>" onclick="return confirm('Anda akan menerima artikel');"><button class="btn btn-success bold">Terima</button></a>
+                <a href="tdkterimaartikel.php?id=<?php echo $item['id_artikel']?>" onclick="return confirm('Anda akan menolak artikel?');"><button class="btn btn-warning bold">Tolak</button></a></p>
                 </td>
+
               </tr>
 
               <?php
@@ -107,10 +114,6 @@ require_once 'init.php';
             ?>
           </tbody>
         </table>
-        <a href="addPetugas.php">
-          <button type="submit" name="submit" class="btn btn-primary"
-          style="margin-left:91.5%;">Tambah</button>
-        </a>
       </div>
     </body>
     <script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
